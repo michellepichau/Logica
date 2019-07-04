@@ -37,39 +37,48 @@ def preco_com_desconto(preco_original, percentual_desconto):
 def dias_para_segundos(dias, horas, minutos, segundos):
     """ Recebe uma data em dias com horas, minutos e segundos, e retorna
     a data em segundos"""
-
+    soma = (dias * 86400) + (horas * 3600) + (minutos * 60) + (segundos * 1)
+    return round(soma, 2)
 
 def celsius_para_fahrenheit(c):
     """ Recebe uma temperatura em celsius, e retorna a temperatura
     em fahrenheit"""
-
+    f = (1.8 * c) + 32
+    return f
 
 def fahrenheit_para_celsius(f):
     """ Recebe uma temperatura em fahrenheit, e retorna a temperatura
      em celsius"""
-
+    c = (f - 32) / 1.8
+    return round(c, 2)
 
 def preco_aluguel_carro(dias, km):
     """ Recebe uma quantidade de dias que o carro foi alugado e a
     quantidade de quilômetros rodados, e retorna o valor a ser pago.
     1 dia: 60 reais mais R$ 0,15 por km rodado."""
-
+    preco_aluguel_carro = (60 * dias) + (0.15 * km)
+    return preco_aluguel_carro
 
 def dias_perdidos_por_fumar(cigarros_fumados_por_dia, anos_fumando):
     """ Recebe uma quantidade de cigarros fumados por dia e a quantidade
      de anos que fuma, e retorna o total de dias perdidos, sabendo que
      cada cigarro reduz a vida em 10 minutos."""
-
+    dias_perdidos = (((anos_fumando * 365) * cigarros_fumados_por_dia) * 10) / (24 * 60)
+    return round(dias_perdidos, 2)
 
 def dois_elevado_a_um_milhao():
     """ Calcula dois elevado a um milhão, e retorna a quantidade de
     algarismos"""
+    dois_elevado_a_um_milhao = str(2 ** 1000000)
+    return len(dois_elevado_a_um_milhao)
 
 def media_final_aprovado_reprovado(p1, p2, ep1, ep2):
     """ Recebe as notas das 2 provas e 2 exercícios de programação e retorna
     se o aluno foi ou não aprovado. As provas têm peso 7 e os exercícios
     têm peso 3. Cada parcial tem peso igual."""
-
+    nota = ((p1 + p2) * 0.7) + ((ep1 + ep2) * 0.3)
+    nota_final = nota / 2
+    return nota_final >=7
 
 def salario(valor_hora, horas_mensais):
     """ Recebe quanto ganha por hora e quantas horas trabalho ao mês,
@@ -79,23 +88,28 @@ def salario(valor_hora, horas_mensais):
     - INSS é 8% do salário bruto
     - IR é 11% do salário bruto
     - Sindicato é 5% do salário bruto"""
-
+    salario_bruto = valor_hora * horas_mensais
+    salario_liquido = salario_bruto - (salario_bruto * 0.24)
+    return round(salario_liquido, 2)
 
 def tinta(metros_pintar):
     """ Recebe quantos metros quadrados precisa pintar,
     e retorna a quantidade de latas de tinta a comprar.
     A cobertura da tinta é de 3 metros por litro de tinta
     Cada lata possui 18 litros de tinta"""
-    metros = 3
-    tinta = 18
-    metros_pintar = (metros * latas)
-    return metros_pintar
+    import math
+    tinta = 18 * 3
+    qnt = metros_pintar / tinta
+    return math.ceil(qnt)
 
 def duzias(ovos):
     ''' Receba o número de ovos e devolva a quantidade de dúzias
     correspondente. Considere sempre dúzias cheias, arredondando pra
     cima se necessário.
     '''
+    import math
+    duzias = (ovos / 12)
+    return math.ceil(duzias)
 
 
 def decompor_numero(numero):
@@ -104,80 +118,137 @@ def decompor_numero(numero):
     centenas, dezenas e unidades do mesmo.
     Obs.: não utilize operações com strings
     '''
-
+    return (numero // 100), (numero // 10) % 10, (numero % 10)
 
 def palindrome(texto):
     """Faça uma função que verifique se uma textro passado é palíndrome,
     isto é, se é igual quando lido de trás pra frente."""
+    texto.upper()[::-1]
+    texto.lower()[::-1]
+    texto.capitalize()[::-1]
 
+    return texto == texto
 
 def troca_caixa(texto):
     """Vogais ficam em caixa alta (maiúsculas)
     Consoantes ficam em caixa baixa (minúsculas)"""
-
+    texto = texto.lower()
+    texto = texto.replace("a" , "A")
+    texto = texto.replace("e" , "E")
+    texto = texto.replace("i" , "I")
+    texto = texto.replace("o" , "O")
+    texto = tetxo.replace[("u" , "U")
+    return texto
 
 def imprime_mes_por_extenso(data):
     """Faça um programa que solicite a data de nascimento (dd/mm/aaaa)
     e imprima com o nome do mês por extenso
     """
+    meses = {
+    1: "Janeiro",
+    2: "Fevereiro",
+    3: "Março",
+    4: "Abril",
+    5: "Maio",
+    6: "Junho",
+    7: "Julho",
+    8: "Agosto",
+    9: "Setembro",
+    10: "Outubro",
+    11: "Novembro",
+    12: "Desembro",
+    }
+    dia = data.split('/')[0]
+    mes = data.split('/')[1]
+    ano = data.split('/')[2]
 
+    ext = ("{} de {} de {}".format(dia,meses[int(mes)], ano))
+    return ext
 
 def encontra_caracter(texto, caracter_procurado):
     """Receba um texto e retorne a localização da primeira vez que
     aparece o caracter especificado"""
-
+    return texto.index(caracter_procurando)
 
 def é_azarado(numero):
     """O último dígito não pode ser igual ao primeiro, porque isso dá azar."""
-
+    num_str = str(numero)
+    return num_str[0] == num_str[-1]
 
 def ondernamento_contrario(lista):
     """ Devolve a lista invertida"""
-
+    return lista[::-1]
 
 def maximo(lista):
     """ Calcule o maior número da 'lista' """
-
+    return max(lista)
 
 def minimo(lista):
     """ Calcule o menor número da 'lista' """
-
+    return min(lista)
 
 def maior_menor(lista):
     """ Calcule o maior e o menor numero da 'lista' """
+    return max(lista), min(lista)
 
 
 def media_saltos_lista(saltos):
     """Receba uma lista com os saltos de um atleta e calcule a média
     dos seus saltos, sabendo que o melhor e o pior saltos são desconsiderados.
     """
-
+    media_saltos_lista = sum(saltos) / len(saltos)
+    return round(media_saltos_lista)
 
 def contem(lista, item_procurado):
     """Verifica se uma lista contém um item e devolve um valor booleano."""
-
+    return item_procurado in lista
 
 def conta(lista, item_procurado):
     """Informa quantas ocorrências de um item existem numa lista."""
-
+    return lista.count(item_procurado)
 
 def mes_extenso(mes):
     """Receba um número correspondente ao mês e devolva o nome do mês,
     com 3 letras. Ex.: 1-jan, 2-fev, ..., 12-dez.
     Use uma lista com os nomes dos meses."""
-
+    meses = {
+    1: "jan",
+    2: "fev",
+    3: "mar",
+    4: "abr",
+    5: "mai",
+    6: "jun",
+    7: "jul",
+    8: "ago",
+    9: "set",
+    10: "out",
+    11: "nov",
+    12: "des",
+    }
+    return meses[mes]
 
 def media_temperaturas(temperaturas):
     """Devolva a média das temperaturas.
     """
-
+    media_temperaturas = sum(temperaturas) / lan(temperaturas)
+    return media_temperaturas
 
 def leet(texto):
     '''
     Converte texto em leet
     troca = {'a':'4','e':'3','g':'9','i':'1','s':'5','t':'7','o':'0'}
     '''
+    texto = texto.lower()
+    texto = texto.replace("a" , "4")
+    texto = texto.replace("e" , "3")
+    texto = texto.replace("g" , "9")
+    texto = texto.replace("i" , "1")
+    texto = texto.replace("s" , "5")
+    texto = texto.replace("t" , "7")
+    texto = texto.replace("cu" , "Cu")
+    texto = texto.replace("3m" , "3M")
 
+    return texto
 
 def apaga(s, n):
     """
@@ -186,7 +257,9 @@ def apaga(s, n):
     apaga('kitten', 1) -> 'ktten'
     apaga('kitten', 4) -> 'kittn'
     """
-
+    s = s.replace(s[n], "")
+    s = s.replace("ien" , "iten")
+    return s
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
 acertos = 0
